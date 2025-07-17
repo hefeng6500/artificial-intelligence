@@ -211,10 +211,15 @@ def train():
 
         if avg_loss < best_loss:
             best_loss = avg_loss
-            torch.save(model.state_dict(), config.MODELS_DIR / "model.tensor")
+            torch.save(model.state_dict(), config.MODELS_DIR / "model.pt")
             print("模型保存成功")
         else:
             print("无需保存模型")
+    
+    # 关闭TensorBoard writer
+    writer.close()
+    print(f"训练完成！TensorBoard日志已保存到: {log_dir}")
+    print(f"启动TensorBoard命令: tensorboard --logdir={config.LOGS_DIR}")
 
 
 def train_one_epoch(model, dataloader, loss_function, optimizer, device):

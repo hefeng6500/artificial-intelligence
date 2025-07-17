@@ -19,20 +19,20 @@ MODELS_DIR = ROOT_DIR / "models"
 
 # ========== 模型超参数 ==========
 # 序列长度：用前5个字符预测第6个字符
-SEQ_LEN = 8
+SEQ_LEN = 5
 
 # 批次大小：每次训练处理的样本数量
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 
 # 词嵌入维度：将字符ID转换为128维向量
-EMBEDDING_DIM = 256
+EMBEDDING_DIM = 128
 
 # RNN隐藏层大小：循环神经网络的隐藏状态维度
-HIDDEN_SIZE = 512
+HIDDEN_SIZE = 256
 
 # ========== 训练超参数 ==========
 # 学习率：控制参数更新的步长大小
-LEARNING_RATE = 5e-4  # 0.0005
+LEARNING_RATE = 1e-3  # 0.001
 
 # 训练轮数：完整遍历训练集的次数
-EPOCHS = 20
+EPOCHS = 5
