@@ -43,7 +43,7 @@ def build_dataset(sentences, word2index):
         tokens = [word2index.get(word, 0) for word in jieba.lcut(sentence)]
         for i in range(0, len(tokens) - config.SEQ_LEN):
             input_seq = tokens[i : i + config.SEQ_LEN]
-            target = tokens[i + 1 : i + 1 + config.SEQ_LEN]
+            target = tokens[i + config.SEQ_LEN]
             dataset.append({"input": input_seq, "target": target})
     return dataset
 
@@ -83,7 +83,7 @@ def process():
         for word in vocab_list:
             f.write(word + "\n")
 
-    word2index = {word: i for i, word in enumerate(vocab_list)}
+    word2index = {word: index for index, word in enumerate(vocab_list)}
 
     # 4. 将句子转换为索引序列，生成输入-目标对（滑动窗口）
     train_dataset = build_dataset(train_sentences, word2index)
