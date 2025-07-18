@@ -215,10 +215,10 @@ def train():
             print("模型保存成功")
         else:
             print("无需保存模型")
-    
+
     # 关闭TensorBoard writer
     writer.close()
-    print(f"训练完成！TensorBoard日志已保存到: {log_dir}")
+    print(f"训练完成！TensorBoard日志已保存到: {config.LOGS_DIR}")
     print(f"启动TensorBoard命令: tensorboard --logdir={config.LOGS_DIR}")
 
 
