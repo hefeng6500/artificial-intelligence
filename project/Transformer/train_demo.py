@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from transformer_model import Transformer, visualize_attention
 import time
+import os
 
 class SimpleTranslationDataset(Dataset):
     """
@@ -170,9 +171,14 @@ def train_model():
     plt.grid(True)
     plt.show()
     
-    # 保存模型
-    torch.save(model.state_dict(), 'transformer_model.pth')
-    print("模型已保存到 transformer_model.pth")
+    # 创建 model 文件夹（如果不存在）
+    model_dir = 'model'
+    os.makedirs(model_dir, exist_ok=True)
+    
+    # 保存模型到 model 文件夹
+    model_path = os.path.join(model_dir, 'transformer_model.pth')
+    torch.save(model.state_dict(), model_path)
+    print(f"模型已保存到 {model_path}")
     
     return model, device
 
