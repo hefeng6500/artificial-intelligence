@@ -89,42 +89,12 @@ def split_csv_data(
 
 def main():
     """主函数"""
-    # 设置路径
-    project_root = Path(__file__).parent
-    csv_path = project_root / "data" / "raw" / "damo_mt_testsets_zh2en_spoken_iwslt1617.csv"
-    output_dir = project_root / "data" / "processed"
-    
-    # 检查CSV文件是否存在
-    if not csv_path.exists():
-        print(f"错误: 找不到数据文件 {csv_path}")
-        return
-    
-    print("开始数据预处理...")
-    
-    # 分割数据
-    datasets = split_csv_data(
-        str(csv_path),
-        str(output_dir),
-        train_ratio=0.8,
-        valid_ratio=0.1,
-        test_ratio=0.1,
-        seed=42
-    )
-    
-    # 打印统计信息
-    print("\n数据分割完成:")
-    print(f"训练集: {len(datasets['train'])} 条")
-    print(f"验证集: {len(datasets['valid'])} 条")
-    print(f"测试集: {len(datasets['test'])} 条")
-    print(f"总计: {sum(len(d) for d in datasets.values())} 条")
-    
-    # 显示一些示例数据
-    print("\n示例数据:")
-    for i, item in enumerate(datasets['train'][:3]):
-        print(f"  {i+1}. 中文: {item['zh']}")
-        print(f"     英文: {item['en']}")
-    
-    print("\n✅ 数据预处理完成！")
+    print("⚠️  注意: 此脚本用于处理CSV格式数据")
+    print("现在项目使用JSONL格式数据，请使用 prepare_jsonl_data.py 脚本")
+    print("\n使用方法:")
+    print("python prepare_jsonl_data.py")
+    print("\n该脚本将处理 common_en_70k.jsonl 和 common_zh_70k.jsonl 文件")
+    return
 
 if __name__ == "__main__":
     main()

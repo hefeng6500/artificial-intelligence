@@ -73,7 +73,7 @@ class TrainingConfig:
     # 数据路径
     data_dir = "./data/processed"      # 数据目录
     train_data_path = "./data/processed/train.json"  # 训练文件路径
-    val_data_path = "./data/processed/valid.json"    # 验证文件路径
+    val_data_path = "./data/processed/val.json"      # 验证文件路径
     test_data_path = "./data/processed/test.json"    # 测试文件路径
     
     # 模型保存路径

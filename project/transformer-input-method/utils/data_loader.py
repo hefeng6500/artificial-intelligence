@@ -160,6 +160,8 @@ class TranslationDataLoader:
         
         if self.data_path.endswith('.json'):
             return self._load_json_data()
+        elif self.data_path.endswith('.jsonl'):
+            return self._load_jsonl_data()
         elif self.data_path.endswith('.csv'):
             return self._load_csv_data()
         elif self.data_path.endswith('.txt'):
@@ -176,6 +178,34 @@ class TranslationDataLoader:
             return data
         else:
             raise ValueError("JSON data should be a list of dictionaries")
+    
+    def _load_jsonl_data(self) -> List[Dict[str, str]]:
+        """加载 JSONL 格式数据"""
+        data = []
+        with open(self.data_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    try:
+                        item = json.loads(line)
+                        # 从conversation中提取中英文对话
+                        if 'conversation' in item and isinstance(item['conversation'], list):
+                            for conv in item['conversation']:
+                                if 'human' in conv and 'assistant' in conv:
+                                    # 根据文件名判断语言
+                                    if 'zh' in self.data_path.lower():
+                                        data.append({
+                                            'zh': conv['human'],
+                                            'en': conv['assistant']
+                                        })
+                                    else:
+                                        data.append({
+                                            'zh': conv['assistant'],
+                                            'en': conv['human']
+                                        })
+                    except json.JSONDecodeError:
+                        continue
+        return data
     
     def _load_csv_data(self) -> List[Dict[str, str]]:
         """加载 CSV 格式数据"""
