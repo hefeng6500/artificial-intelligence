@@ -175,7 +175,6 @@ data/
 !data/sample/
 *.csv
 *.json
-*.txt
 *.tsv
 
 # 模型文件
