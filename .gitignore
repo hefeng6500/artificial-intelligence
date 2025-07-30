@@ -94,29 +94,20 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
-#poetry.toml
 
 # pdm
 #   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+#   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
-.pdm-python
-.pdm-build/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -163,36 +154,122 @@ cython_debug/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+#  be added to the global gitignore or merged into this project gitignore.  For a PyCharm
+#  project, it is recommended to include the following files:
+#  .idea/
+#  *.iml
+#  *.ipr
+#  *.iws
+.idea/
+*.iml
+*.ipr
+*.iws
 
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
+# VS Code
+.vscode/
 
-# Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the entire vscode folder
-# .vscode/
+# 项目特定文件
 
-# Ruff stuff:
-.ruff_cache/
+processed
+# 模型文件
+checkpoints/
+models/saved/
+*.pt
+*.pth
+*.bin
+*.safetensors
 
-# PyPI configuration file
-.pypirc
+# 日志文件
+logs/
+*.log
+tensorboard_logs/
+wandb/
+runs/
 
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
+# 输出文件
+outputs/
+results/
+figures/
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.svg
+
+# 临时文件
+temp/
+tmp/
+*.tmp
+*.temp
+
+# 配置文件（包含敏感信息）
+config/local_config.py
+config/secrets.json
+.env.local
+.env.production
+
+# 缓存文件
+.cache/
+cache/
+*.cache
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# NLTK数据
+nltk_data/
+
+# Jupyter相关
+.ipynb_checkpoints/
+*.ipynb
+
+# 实验记录
+experiments/
+notebooks/
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 编译文件
+*.pyc
+*.pyo
+*.pyd
+
+# 文档构建
+docs/_build/
+docs/build/
+
+# 测试覆盖率
+.coverage
+htmlcov/
+
+# 性能分析
+*.prof
+*.profile
+
+# 内存分析
+*.mprof
+
+# GPU相关
+*.gpu
+
+# 分布式训练
+nccl_*
+
+# Slurm作业
+*.out
+*.err
+slurm-*
+
 
 node_modules/
 logs/
